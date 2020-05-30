@@ -1,8 +1,15 @@
+package com.ProjetServicesWeb.Lecteur;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class Lecteur {
-    private static int nbLecteurs = 0;
+    @Id
+    @GeneratedValue
     private int id;
     private String genre;
     private String nom;
@@ -10,9 +17,11 @@ public class Lecteur {
     private Date dateNaissance;
     private String adresse;
 
+    public Lecteur(){
+
+    }
+
     public Lecteur(String genre, String nom, String prenom, Date dateNaissance, String adresse) {
-        nbLecteurs++;
-        this.id = nbLecteurs;
         this.genre = genre;
         this.nom = nom;
         this.prenom = prenom;
@@ -20,13 +29,13 @@ public class Lecteur {
         this.adresse = adresse;
     }
 
-    public static int getNbLecteurs() {
+    /*public static int getNbLecteurs() {
         return nbLecteurs;
     }
 
     public static void setNbLecteurs(int nbLecteurs) {
         Lecteur.nbLecteurs = nbLecteurs;
-    }
+    }*/
 
     public int getId() {
         return id;
@@ -76,30 +85,4 @@ public class Lecteur {
         this.adresse = adresse;
     }
 
-    public void ajouterLecteur(String genre, String nom, String prenom, Date dateNaissance, String adresse){
-        Lecteur lecteur = new Lecteur(genre, nom, prenom, dateNaissance, adresse);
-    }
-
-    public Lecteur recupererLecteur(String isbn){
-
-    }
-
-    public List<Lecteur> listerLecteur(){
-
-    }
-
-    public void modifierLecteur(String genre, String nom, String prenom, Date dateNaissance, String adresse){
-
-    }
-
-    public void supprimerLecteur(){
-
-    }
-
-    public boolean existeLecteur(int id){
-        if(/*Lecteur existe en base*/true){
-            return true;
-        }
-        return false;
-    }
 }
