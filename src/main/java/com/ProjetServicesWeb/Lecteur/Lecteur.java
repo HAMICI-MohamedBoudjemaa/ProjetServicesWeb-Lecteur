@@ -85,4 +85,15 @@ public class Lecteur {
         this.adresse = adresse;
     }
 
+    @Override
+    public String toString() {
+        return "Lecteur{" +
+                "id=" + id +
+                ", genre='" + genre + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", dateNaissance=" + dateNaissance +
+                ", adresse='" + adresse + '\'' +
+                '}';
+    }
 }

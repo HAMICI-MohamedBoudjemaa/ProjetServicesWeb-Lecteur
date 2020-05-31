@@ -37,6 +37,10 @@ class LecteurApplicationTests {
 		Lecteur lecteur = entityLecteur.getBody().getContent();
 		assertTrue(lecteur.getId()==2);
 
+		ResponseEntity<EntityModel<Lecteur>> entityLecteur2 = lecteurController.findById(256);
+		Lecteur lecteur2 = entityLecteur2.getBody().getContent();
+		assertEquals(0,lecteur2.getId());
+
 		//assertThat(books).extracting(com.ProjetServicesWeb.Lecteur.Lecteur::getName).containsOnly("C++");
 
 	}
