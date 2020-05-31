@@ -119,8 +119,8 @@ class LecteurApplicationTests {
 		lecteurController.create(cree2);
 
 
-		List<Lecteur> lecteur = lecteurController.findBy(null,null,null,null, "adresse2").getBody().getContent().stream().collect(Collectors.toList());
-		assertTrue(lecteur.size()==2);
+		List<Lecteur> lecteur = lecteurController.findBy(null,null,null,null,null).getBody().getContent().stream().collect(Collectors.toList());
+		assertTrue(lecteur.size()>=2);
 
 		//assertThat(books).extracting(com.ProjetServicesWeb.Lecteur.Lecteur::getName).containsOnly("C++");
 
@@ -128,11 +128,13 @@ class LecteurApplicationTests {
 
 	@Test
 	public void testModify() {
-		Lecteur cree = new Lecteur("masculin","nom1", "prenom1", new Date("22/05/1995"), "adresse1");
-		lecteurController.create(cree);
-		Lecteur cree2 = new Lecteur("feminin","nom2", "prenom2", new Date("24/03/1996"), "adresse2");
+		ResponseEntity<EntityModel<Lecteur>> cree = lecteurController.create(new Lecteur("masculin","nom1", "prenom1", new Date("22/05/1995"), "adresse1"));
+
+		assertTrue(cree.getBody().getContent().getGenre()=="masculin");
+		Lecteur cree2 = cree.getBody().getContent();
+		cree2.setGenre("feminin");
 		Lecteur lecteur = lecteurController.modify(cree2).getBody().getContent();
-		assertEquals(cree2, lecteur);
+		assertTrue(cree.getBody().getContent().getGenre()=="feminin");
 
 		//assertThat(books).extracting(com.ProjetServicesWeb.Lecteur.Lecteur::getName).containsOnly("C++");
 

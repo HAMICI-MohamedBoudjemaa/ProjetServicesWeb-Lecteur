@@ -51,7 +51,7 @@ public class LecteurServiceProviderImpl implements LecteurServiceProvider{
 
     @Override
     public List<Lecteur> getAll() {
-        return null;
+        return lecteurRepository.findAll();
     }
 
     @Override
