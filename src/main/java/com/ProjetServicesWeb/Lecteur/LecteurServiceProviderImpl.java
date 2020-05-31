@@ -60,7 +60,7 @@ public class LecteurServiceProviderImpl implements LecteurServiceProvider{
         {
             return lecteurRepository.save(lecteur);
         }
-        return null;
+        return new Lecteur();
     }
 
     @Override
